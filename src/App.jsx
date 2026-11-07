@@ -11,6 +11,77 @@ import RevisionQueue from './components/RevisionQueue'
 import StreakBar from './components/StreakBar'
 import './App.css'
 
+const DREAM_COLLEGES = [
+  'Andhra University College of Engineering',
+  'Jawaharlal Nehru Technological University',
+  'Sri Venkateswara University College of Engineering',
+  'Gayatri Vidya Parishad College of Engineering',
+  'GMR Institute of Technology',
+]
+
+const MOTIVATION_QUOTES = [
+  {
+    quote: 'Dream, dream, dream. Dreams transform into thoughts and thoughts result in action.',
+    author: 'A. P. J. Abdul Kalam',
+  },
+  {
+    quote: 'Education is the most powerful weapon which you can use to change the world.',
+    author: 'Nelson Mandela',
+  },
+  {
+    quote: 'Genius is one percent inspiration and ninety-nine percent perspiration.',
+    author: 'Thomas Edison',
+  },
+]
+
+function CollegesPage() {
+  return (
+    <div className="app colleges-page">
+      <div className="atmosphere" aria-hidden="true" />
+      <a className="colleges-back" href="/">← Back to your tracker</a>
+      <header className="colleges-hero">
+        <p className="eyebrow">Keep your goal in sight</p>
+        <h1>Your dream colleges</h1>
+        <p>Every focused study session brings you one step closer.</p>
+      </header>
+      <main className="colleges-grid">
+        {DREAM_COLLEGES.map((college, index) => (
+          <article className="college-card" key={college}>
+            <span className="college-number">0{index + 1}</span>
+            <h2>{college}</h2>
+            <span className="college-star" aria-hidden="true">✦</span>
+          </article>
+        ))}
+      </main>
+      <section className="your-why" aria-labelledby="your-why-title">
+        <span className="your-why-star" aria-hidden="true">✦</span>
+        <p className="eyebrow">For the days you need a reminder</p>
+        <h2 id="your-why-title">This dream is yours. Keep showing up for it.</h2>
+        <p>
+          These campuses are more than names on a list—they’re a picture of the
+          future you’re working toward. One topic mastered, one revision
+          finished, one focused session at a time: you are moving closer to
+          your ECET goal. Start with what you can do today.
+        </p>
+        <strong>Today’s step: study one topic. Your future self will thank you.</strong>
+      </section>
+      <section className="motivation-section" aria-labelledby="motivation-title">
+        <p className="eyebrow">Words to carry with you</p>
+        <h2 id="motivation-title">From people who changed the world</h2>
+        <div className="motivation-grid">
+          {MOTIVATION_QUOTES.map(({ quote, author }) => (
+            <blockquote className="motivation-quote" key={author}>
+              <span aria-hidden="true">“</span>
+              <p>{quote}</p>
+              <cite>— {author}</cite>
+            </blockquote>
+          ))}
+        </div>
+      </section>
+    </div>
+  )
+}
+
 function Ring({ pct, color, size = 72 }) {
   const r = 28
   const c = 2 * Math.PI * r
@@ -309,6 +380,7 @@ export default function App() {
   const [active, setActive] = useState('all')
   const [query, setQuery] = useState('')
   const deferredQuery = useDeferredValue(query.trim().toLowerCase())
+  const isCollegesRoute = window.location.pathname.replace(/\/$/, '') === '/colleges'
 
   const filtered = useMemo(() => {
     const base =
@@ -333,6 +405,8 @@ export default function App() {
       }))
       .filter((subject) => subject.units.length > 0)
   }, [active, deferredQuery])
+
+  if (isCollegesRoute) return <CollegesPage />
 
   return (
     <div className="app">
