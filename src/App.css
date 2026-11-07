@@ -661,6 +661,7 @@
 
 .topic {
   border: 1px solid var(--line);
+  border-left: 4px solid #82909a;
   border-radius: 12px;
   background: var(--panel-solid);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -755,10 +756,10 @@
   background: #d7e4ff;
 }
 
-.topic.status-done,
-.topic.status-revised {
-  box-shadow: inset 3px 0 0 var(--subject-accent);
-}
+.topic.status-todo { border-left-color: #7b8790; background: #fff; }
+.topic.status-learning { border-left-color: #d28a18; background: #fff; }
+.topic.status-done { border-left-color: #0f766e; background: #fff; }
+.topic.status-revised { border-left-color: #4263a5; background: #fff; }
 
 .topic-body {
   padding: 0 0.85rem 0.9rem 1.3rem;
@@ -1526,4 +1527,71 @@
   .kpi-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+}
+
+/* Test log, study planning, and responsive data tables */
+.test-summary, .quiz-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; margin: 0 0 1rem; }
+.tests-main { display: grid; min-height: 30vh; align-content: start; gap: .8rem; }
+.quiz-kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.test-summary .kpi, .quiz-kpis .kpi { min-width: 0; }
+.test-form, .planning-card, .tests-page > .chart-card { margin-bottom: 1rem; }
+.form-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; }
+.form-grid label, .mistake-fields label { display: grid; gap: .3rem; color: var(--ink-soft); font-size: .78rem; font-weight: 700; }
+.form-grid input, .form-grid select, .form-grid textarea, .mistake-fields input { min-width: 0; width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: .55rem .65rem; color: var(--ink); background: var(--panel-solid); }
+.wide-field { grid-column: span 2; }
+.mistake-fields { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .7rem; margin: .9rem 0; padding: .7rem; border: 1px solid var(--line); border-radius: 10px; }
+.mistake-fields legend { padding: 0 .4rem; color: var(--ink-soft); font-size: .8rem; font-weight: 700; }
+.primary-btn { border: 0; border-radius: 999px; padding: .6rem 1.1rem; color: #fff; background: var(--teal-deep); font-weight: 700; }
+.form-error { color: #b42318; font-size: .85rem; font-weight: 700; }
+.planning-grid { align-items: end; }
+.theme-toggle { display: flex !important; align-items: center; gap: .55rem !important; min-height: 2.5rem; }
+.theme-toggle input { width: auto; }
+.backup-actions { display: flex; gap: .5rem; align-items: center; }
+.file-button { position: relative; overflow: hidden; cursor: pointer; }
+.file-button input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.plan-countdown { margin: .9rem 0; color: var(--teal-deep); font-weight: 750; }
+.daily-target { margin-top: 1rem; }
+.daily-target > div:first-child { display: flex; justify-content: space-between; gap: 1rem; color: var(--ink); }
+.daily-target span, .daily-target small { color: var(--ink-soft); font-size: .8rem; }
+.target-track, .bar-track { overflow: hidden; height: .65rem; border-radius: 999px; background: color-mix(in srgb, var(--ink) 9%, transparent); }
+.target-track { margin: .45rem 0; }
+.target-track i { display: block; height: 100%; border-radius: inherit; background: var(--teal); transition: width .25s ease; }
+.table-scroll { width: 100%; overflow-x: auto; }
+.data-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+.data-table th, .data-table td { padding: .65rem .55rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.data-table th { color: var(--ink-soft); font-size: .7rem; letter-spacing: .04em; text-transform: uppercase; }
+.data-table small { display: block; margin-top: .15rem; color: var(--ink-soft); }
+.delete-btn { border: 1px solid var(--line); border-radius: 999px; padding: .25rem .55rem; color: #a33128; background: transparent; font-size: .75rem; }
+.trend-wrap { height: 12rem; }
+.trend-wrap svg { width: 100%; height: 10.5rem; overflow: visible; }
+.trend-wrap line { stroke: var(--line); stroke-width: .7; }
+.trend-wrap polyline { fill: none; stroke: var(--teal); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.trend-wrap circle { fill: var(--teal); vector-effect: non-scaling-stroke; }
+.trend-labels { display: flex; justify-content: space-between; color: var(--ink-soft); font-size: .7rem; }
+.mistake-fill { background: #c47a12; }
+.quiz-card-accuracy { padding: .1rem .4rem; border-radius: 999px; color: #155e55; background: #d9f1e6; font-size: .72rem; font-weight: 700; }
+.data-controls { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin: -.3rem 0 .8rem; color: var(--ink-soft); font-size: .78rem; }
+.app.dark-mode { --ink: #e7edf2; --ink-soft: #b4c0ca; --paper: #101820; --panel: rgba(28, 40, 50, .95); --panel-solid: #1c2832; --line: rgba(224, 235, 243, .15); --teal-deep: #72d4c3; --shadow: 0 18px 40px rgba(0, 0, 0, .25); color: var(--ink-soft); }
+.app.dark-mode .atmosphere { background: radial-gradient(ellipse 80% 50% at 10% -10%, rgba(15, 118, 110, .2), transparent 55%), linear-gradient(180deg, #111b23, #101820 65%, #151f29); }
+.app.dark-mode .topic.status-todo, .app.dark-mode .topic.status-learning, .app.dark-mode .topic.status-done, .app.dark-mode .topic.status-revised { background: #1c2832; }
+.app.dark-mode .status-chip.status-todo { color: #d4dce2; background: #384650; }
+.app.dark-mode .status-chip.status-learning { color: #ffdc9b; background: #5b401e; }
+.app.dark-mode .status-chip.status-done { color: #a6e8d2; background: #1e5148; }
+.app.dark-mode .status-chip.status-revised { color: #c5d5ff; background: #2b4169; }
+.app.dark-mode .quiz-card-accuracy { color: #a6e8d2; background: #1e5148; }
+.app.dark-mode .streak-day-dot { background: #3b4a55; }
+.app.dark-mode .tab.active, .app.dark-mode .view-tab.active { background: #365c59; border-color: #365c59; color: #f1fbf8; }
+
+@media (max-width: 720px) {
+  .test-summary, .quiz-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mistake-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .data-controls, .daily-target > div:first-child { align-items: flex-start; flex-direction: column; }
+}
+@media (max-width: 420px) {
+  .test-summary, .quiz-kpis { grid-template-columns: 1fr 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .wide-field { grid-column: auto; }
+  .mistake-fields { grid-template-columns: 1fr 1fr; }
+  .backup-actions { flex-wrap: wrap; }
 }

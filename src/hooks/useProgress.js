@@ -10,7 +10,8 @@ import {
   isHighMarkTopic,
 } from '../data/syllabus'
 
-const STORAGE_KEY = 'ap-ecet-2026-progress-v2'
+const STORAGE_KEY = 'ap-ecet-tracker-v3'
+const OLD_STORAGE_KEY = 'ap-ecet-2026-progress-v2'
 const LEGACY_KEY = 'ap-ecet-2026-progress-v1'
 const ACTIVITY_KEY = 'ap-ecet-2026-activity-v1'
 
@@ -114,7 +115,7 @@ export function buildStreak(activity, now = new Date()) {
   }
   best = Math.max(best, current)
 
-  const recent = []
+  const recent = [  ]
   for (let i = 13; i >= 0; i -= 1) {
     const d = addDays(now, -i)
     const key = localDayKey(d)
@@ -139,6 +140,7 @@ export function buildStreak(activity, now = new Date()) {
     atRisk,
     totalDays,
     todayCount,
+    todayRevised: days[todayKey]?.revised || 0,
     recent,
   }
 }
@@ -283,25 +285,22 @@ function normalizeSub(s) {
   return { strength, revised, revisedAt, nextReviewAt, reviewCount }
 }
 
+function normalizeProgress(saved) {
+  const base = emptyProgress()
+  for (const id of Object.keys(base)) {
+    if (!saved?.[id]) continue
+    const subs = { ...base[id].subs }
+    for (const key of Object.keys(subs)) subs[key] = normalizeSub(saved[id].subs?.[key])
+    base[id] = { status: saved[id].status || 'todo', notes: saved[id].notes || '', subs }
+  }
+  return base
+}
+
 function loadProgress() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY)
+    const raw = localStorage.getItem(OLD_STORAGE_KEY)
     if (raw) {
-      const saved = JSON.parse(raw)
-      const base = emptyProgress()
-      for (const id of Object.keys(base)) {
-        if (!saved[id]) continue
-        const subs = { ...base[id].subs }
-        for (const key of Object.keys(subs)) {
-          subs[key] = normalizeSub(saved[id].subs?.[key])
-        }
-        base[id] = {
-          status: saved[id].status || 'todo',
-          notes: saved[id].notes || '',
-          subs,
-        }
-      }
-      return base
+      return normalizeProgress(JSON.parse(raw))
     }
 
     const legacy = localStorage.getItem(LEGACY_KEY)
@@ -575,22 +574,49 @@ export function buildAnalytics(progress) {
 }
 
 export function useProgress() {
-  const [progress, setProgress] = useState(loadProgress)
-  const [activity, setActivity] = useState(loadActivity)
+  const [savedData] = useState(() => {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null') } catch { return null }
+  })
+  const [progress, setProgress] = useState(() => savedData?.progress ? normalizeProgress(savedData.progress) : loadProgress())
+  const [activity, setActivity] = useState(() => savedData?.activity || loadActivity())
+  const [tests, setTests] = useState(() => Array.isArray(savedData?.tests) ? savedData.tests : [])
+  const [settings, setSettings] = useState(() => ({ examDate: '', dailyTarget: 5, darkMode: false, ...(savedData?.settings || {}) }))
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(progress))
-  }, [progress])
-
-  useEffect(() => {
-    localStorage.setItem(ACTIVITY_KEY, JSON.stringify(activity))
-  }, [activity])
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ progress, activity, tests, settings }))
+  }, [progress, activity, tests, settings])
 
   const analytics = useMemo(() => buildAnalytics(progress), [progress])
   const streak = useMemo(() => buildStreak(activity), [activity])
 
   function logActivity(kind) {
     setActivity((prev) => bumpActivity(prev, kind))
+  }
+
+  function addTest(test) {
+    setTests((prev) => [{ ...test, id: `${Date.now()}-${Math.random().toString(36).slice(2)}` }, ...prev])
+    logActivity('test')
+    if (test.attempted - test.correct > 0 && test.mistakes.reduce((sum, n) => sum + Number(n || 0), 0) !== test.attempted - test.correct) return
+    if (test.attempted > 0 && (test.correct / test.attempted) * 100 < 60) {
+      const topic = allTopics().find((item) => item.id === test.topicId)
+      if (!topic) return
+      setProgress((prev) => {
+        const entry = prev[topic.id]
+        const subs = { ...entry.subs, 0: { ...entry.subs[0], strength: 'weak', revised: false, nextReviewAt: toDateKey(new Date()) } }
+        return { ...prev, [topic.id]: { ...entry, subs, status: deriveTopicStatus(subs, topic.points.length) } }
+      })
+    }
+  }
+
+  function deleteTest(id) { setTests((prev) => prev.filter((test) => test.id !== id)) }
+  function updateSettings(patch) { setSettings((prev) => ({ ...prev, ...patch })) }
+  function replaceBackup(data) {
+    const next = JSON.parse(data)
+    const imported = next?.progress ? next : { progress: next }
+    setProgress(normalizeProgress(imported.progress))
+    setActivity(imported.activity || emptyActivity())
+    setTests(Array.isArray(imported.tests) ? imported.tests : [])
+    setSettings({ examDate: '', dailyTarget: 5, darkMode: false, ...(imported.settings || {}) })
   }
 
   function applyStrength(sub, strength) {
@@ -637,7 +663,6 @@ export function useProgress() {
         },
       }
     })
-    logActivity('rate')
   }
 
   function cycleSubStrength(topicId, index) {
@@ -661,7 +686,6 @@ export function useProgress() {
         },
       }
     })
-    logActivity('rate')
   }
 
   function completeRevision(topicId, index) {
@@ -779,9 +803,10 @@ export function useProgress() {
   }
 
   function resetAll() {
-    if (!window.confirm('Reset all progress? This cannot be undone.')) return
     setProgress(emptyProgress())
     setActivity(emptyActivity())
+    setTests([])
+    setSettings({ examDate: '', dailyTarget: 5, darkMode: false })
   }
 
   return {
@@ -798,5 +823,6 @@ export function useProgress() {
     streak,
     overall: analytics.totals,
     subjectStats: (subject) => subjectStats(subject, progress),
+    tests, addTest, deleteTest, settings, updateSettings, replaceBackup,
   }
 }

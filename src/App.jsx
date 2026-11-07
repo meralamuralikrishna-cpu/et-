@@ -9,6 +9,8 @@ import { isReviewDue, useProgress } from './hooks/useProgress'
 import Analytics from './components/Analytics'
 import RevisionQueue from './components/RevisionQueue'
 import StreakBar from './components/StreakBar'
+import Tests from './components/Tests'
+import QuizAnalytics from './components/QuizAnalytics'
 import './App.css'
 
 const DREAM_COLLEGES = [
@@ -153,6 +155,7 @@ function TopicCard({
   onToggleRevised,
   onMarkRevised,
   onNotes,
+  tests = [],
 }) {
   const [open, setOpen] = useState(false)
   const counts = topic.points.reduce(
@@ -164,6 +167,10 @@ function TopicCard({
     },
     { strong: 0, average: 0, weak: 0, unrated: 0, revised: 0 },
   )
+  const quizTests = tests.filter((test) => test.topicId === topic.id)
+  const quizAttempted = quizTests.reduce((sum, test) => sum + test.attempted, 0)
+  const quizCorrect = quizTests.reduce((sum, test) => sum + test.correct, 0)
+  const quizAccuracy = quizAttempted ? Math.round(quizCorrect / quizAttempted * 100) : null
 
   return (
     <article className={`topic status-${entry.status}`}>
@@ -197,6 +204,7 @@ function TopicCard({
             <span className="points-count">
               {topic.points.length} sub-topics
             </span>
+            {quizAccuracy !== null && <span className="quiz-card-accuracy">Quiz accuracy {quizAccuracy}%</span>}
             <span className="strength-summary">
               <em className="c-strong">{counts.strong}S</em>
               <em className="c-avg">{counts.average}A</em>
@@ -293,6 +301,7 @@ function SubjectPanel({
   onToggleRevised,
   onMarkRevised,
   onNotes,
+  tests,
 }) {
   return (
     <section
@@ -349,6 +358,7 @@ function SubjectPanel({
                   onToggleRevised={onToggleRevised}
                   onMarkRevised={onMarkRevised}
                   onNotes={onNotes}
+                  tests={tests}
                 />
               ))}
             </div>
@@ -374,6 +384,12 @@ export default function App() {
     streak,
     overall,
     subjectStats,
+    tests,
+    addTest,
+    deleteTest,
+    settings,
+    updateSettings,
+    replaceBackup,
   } = useProgress()
 
   const [view, setView] = useState('syllabus')
@@ -381,6 +397,29 @@ export default function App() {
   const [query, setQuery] = useState('')
   const deferredQuery = useDeferredValue(query.trim().toLowerCase())
   const isCollegesRoute = window.location.pathname.replace(/\/$/, '') === '/colleges'
+  const exportBackup = () => {
+    const link = document.createElement('a')
+    link.href = URL.createObjectURL(new Blob([localStorage.getItem('ap-ecet-tracker-v3') || '{}'], { type: 'application/json' }))
+    link.download = 'ap-ecet-tracker-backup.json'
+    link.click()
+    URL.revokeObjectURL(link.href)
+  }
+  const importBackup = async (file) => {
+    try {
+      const raw = await file.text()
+      const parsed = JSON.parse(raw)
+      if (!parsed || typeof parsed !== 'object') throw new Error('Invalid backup')
+      replaceBackup(raw)
+      window.alert('Backup imported.')
+    } catch {
+      window.alert('Could not import this JSON backup.')
+    }
+  }
+  const resetWithConfirm = () => {
+    if (!window.confirm('Reset all tracker data, tests, settings and activity?')) return
+    if (!window.confirm('This removes the saved tracker data from this browser. Continue?')) return
+    resetAll()
+  }
 
   const filtered = useMemo(() => {
     const base =
@@ -409,7 +448,7 @@ export default function App() {
   if (isCollegesRoute) return <CollegesPage />
 
   return (
-    <div className="app">
+    <div className={settings.darkMode ? 'app dark-mode' : 'app'}>
       <div className="atmosphere" aria-hidden="true" />
 
       <header className="hero">
@@ -449,6 +488,7 @@ export default function App() {
             id: 'revision',
             label: `Revision (${analytics.revisionQueue.length})`,
           },
+          { id: 'tests', label: `Tests (${tests.length})` },
         ].map((tab) => (
           <button
             key={tab.id}
@@ -498,11 +538,10 @@ export default function App() {
                 onChange={(e) => setQuery(e.target.value)}
                 aria-label="Search sub-topics"
               />
-              <button type="button" className="ghost" onClick={resetAll}>
-                Reset
-              </button>
             </div>
           </nav>
+
+          <div className="data-controls"><span>Local backup protects progress on this device.</span><button type="button" className="ghost reset-btn" onClick={resetWithConfirm}>Reset all data</button></div>
 
           <div className="legend">
             {['weak', 'average', 'strong'].map((id) => {
@@ -536,6 +575,7 @@ export default function App() {
                   onToggleRevised={toggleRevised}
                   onMarkRevised={markTopicRevised}
                   onNotes={setNotes}
+                  tests={tests}
                 />
               ))
             )}
@@ -544,6 +584,7 @@ export default function App() {
       )}
 
       {view === 'analytics' && (
+        <>
         <Analytics
           analytics={analytics}
           streak={streak}
@@ -553,6 +594,8 @@ export default function App() {
             setActive(subjectId)
           }}
         />
+        <QuizAnalytics tests={tests} />
+        </>
       )}
 
       {view === 'revision' && (
@@ -562,6 +605,22 @@ export default function App() {
           onCycleStrength={cycleSubStrength}
           onCompleteRevision={completeRevision}
         />
+      )}
+
+      {view === 'tests' && (
+        <main className="main tests-main">
+          <Tests
+            tests={tests}
+            onAdd={addTest}
+            onDelete={deleteTest}
+            settings={settings}
+            onSettings={updateSettings}
+            onExport={exportBackup}
+            onImport={importBackup}
+            todayRevised={streak.todayRevised}
+            progress={progress}
+          />
+        </main>
       )}
 
       <footer className="footer">

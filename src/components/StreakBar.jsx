@@ -4,7 +4,7 @@ export default function StreakBar({ streak }) {
   const { current, best, activeToday, atRisk, todayCount, recent, totalDays } =
     streak
 
-  let status = 'Rate a sub-topic or revise to start a streak.'
+  let status = 'Log a test or complete a revision to start a streak.'
   if (activeToday) {
     status =
       todayCount === 1
@@ -13,7 +13,7 @@ export default function StreakBar({ streak }) {
   } else if (atRisk) {
     status = 'Study today or this streak resets at midnight.'
   } else if (current === 0 && totalDays > 0) {
-    status = 'Streak broken — one rating or revision starts it again.'
+    status = 'Streak broken — log a test or revise a topic to start again.'
   }
 
   return (
