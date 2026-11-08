@@ -1,0 +1,77 @@
+1.0 Introduction
+- History of Python.
+- List Python features.
+- Explain Applications of Python.
+- Describe Python Integrated Development and Learning Environment (IDLE).
+- Give the process of Running Python Scripts.
+- Explain Identifiers, Keywords, Indentation, Variables.
+- Explain various datatypes (Int, float, Boolean, string, and list).
+- Explain declaration, initialization of variables.
+- Explain Input and Output statements.
+- Explain formatted input output.
+- State the usage of comments.
+- Explain various Operators.
+- Explain Boolean values.
+- Explain Operator precedence rules.
+- State the purpose of modules.
+- Define functions.
+- List types of functions (Built-in, User defined).
+- Explain Built-in Functions.
+- Give the Steps in Develop a simple python program and execution.
+2.0 Control Flow and Loops
+- Explain various Control Flow constructs.
+  - If
+  - If-Else
+  - If-elif-else
+- Explain various Loop Statements.
+  - for Loop
+  - while loop
+  - break
+  - continue
+  - pass
+3.0 Functions and Arrays
+- Introduction.
+- Function Arguments: Default arguments, Variable Length arguments.
+- Anonymous Functions.
+- Return Statement.
+- Scope of variables: Local Variables and Global Variables.
+- Explain creation of modules.
+- Explain importing of modules.
+- Python Variable: Namespace and scoping.
+- Python Packages.
+- Explain Strings: String slices, immutability.
+- Explain String functions and methods.
+- Explain about String module.
+- Explain about Python Arrays.
+- Explain accessing of elements in an Array.
+- Explain Array methods.
+4.0 Data Structures
+- Explain Python Lists.
+- Describe Basic List Operations.
+- Explain List Slices.
+- Explain List methods.
+- Explain List loop.
+- Explain mutability.
+- Explain aliasing.
+- Explain Cloning lists.
+- Explain List parameters.
+- Explain List comprehension.
+- Tuples.
+- Explain Tuple assignment.
+- Explain Tuple as return value.
+- Explain Tuple Comprehension.
+- Dictionaries.
+- Explain creation of dictionary/assignment.
+- Explain Operations and methods.
+- Explain Dictionary Comprehension.
+- Explain Sets.
+5.0 Object Oriented Programming in Python and File Handling and Exception Handling
+- Creating Classes.
+- Creating Objects.
+- Method Overloading and Overriding.
+- Data Hiding.
+- Data Abstraction.
+- Opening files in different modes.
+- Processing files.
+- Closing a file.
+- Exception Handling.

@@ -1,0 +1,60 @@
+CPU Organization & Information Representation and Arithmetic Operation
+CPU Organization
+- Draw the functional block diagram of Digital computer and explain the function of each unit.
+- Define Register.
+- State the purpose of:
+  - Accumulator.
+  - Program Counter.
+  - Instruction Register.
+  - Memory Buffer Register.
+  - Memory Address Register.
+- Draw the block diagram of simple accumulator-based CPU.
+- Explain the function of each unit.
+- Define the terms micro operation, macro operation.
+- Define instruction cycle, fetch cycle and execution cycle.
+- What is stored program concept?
+- Describe the sequential execution of a program stored in memory by the CPU.
+Information Representation and Arithmetic Operation
+- Explain the basic types of information representation in a computer.
+- Define floating point representation and fixed point representation of numbers.
+- Illustrate the floating point and fixed point representations with example.
+- Distinguish between Fixed point and Floating point representations.
+- What is Instruction format?
+- Define Opcode, Operand and address.
+- Explain different types of instructions with examples:
+  - Zero address instructions.
+  - One address instructions.
+  - Two address instructions.
+  - Three address instructions.
+- List and explain various addressing modes.
+4. Memory Organization
+- Distinguish between main and auxiliary memory.
+- State the need for memory hierarchy in a computer.
+- Explain memory hierarchy in a computer in detail.
+- State the significance of various memory device characteristics:
+  - Access time.
+  - Access rate.
+  - Alterability.
+  - Permanence of storage.
+  - Cycle time.
+- Discuss Associative Memory.
+- Explain the principle of virtual memory organization in a computer system.
+- Explain virtual address and physical address organization.
+- State the principle of locality of reference.
+- Explain Cache memory organization.
+- Analyze the importance of the principle of memory interleaving in a computer.
+5. I/O Organization
+- List any five peripheral devices that can be connected to a computer.
+- Define Interface.
+- Explain the need for an interface.
+- List modes of data transfer.
+- Explain synchronous and asynchronous data transfer.
+- Compare synchronous and asynchronous data transfer.
+- Explain handshaking procedure of data transfer.
+- Explain programmed I/O method of data transfer.
+- Explain interrupt initiated I/O.
+- Explain DMA controlled transfer.
+- Explain priority interrupt, polling, and daisy chaining priority.
+- Write about bus system.
+- List the four bus systems.
+- Differentiate between I/O bus and memory bus.

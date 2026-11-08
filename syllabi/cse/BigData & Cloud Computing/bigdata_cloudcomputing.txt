@@ -1,0 +1,113 @@
+1. Overview of Data Mining
+- Define Data Mining.
+- List type of Data Mining.
+- List Advantages of Data Mining.
+- List Disadvantages of Data Mining.
+- List Applications of Data Mining.
+- Challenges of Implementation in Data mining.
+- Evolution of Data Mining.
+- List and explain Data Mining Techniques.
+- Explain Data Mining Implementation Process.
+- Explaining Data Mining Architecture.
+- Explain KDD – Knowledge Discovery in Databases of Data Mining.
+- List and explain Data Mining tools.
+- List Major Difference between Data mining and Machine learning.
+- State the importance of Data Analytics.
+- List and explain phases of Data Analytics.
+- Difference between Data Mining and Data Analytics.
+- List and explain types of Data mining techniques.
+- Explain Text data mining.
+- Differentiate between classification and clustering in data mining.
+2. Overview of Data Warehousing
+- What is data ware housing.
+- State the importance of Data Ware Housing.
+- Difference between Database and Data Warehouse.
+- Explain Data Warehouse Architecture.
+- Explain Three-Tier Data Warehouse Architecture.
+- What is Operational Data Stores?
+- Define ETL and ELT.
+- List Types of Data Warehouses.
+- Explain Data Ware Housing Model.
+- Explain Data Warehouse Design approaches.
+- State terms Meta Data, Data Mart.
+- What is OLAP.
+- List characteristics of OLAP.
+- Differentiate between OLTP and OLAP.
+- List Types of OLAP.
+- Data Mining Vs Data Warehousing.
+3. Introduction to Big Data
+- Define bigdata.
+- Evolution of data/bigdata.
+- Challenges of Traditional system.
+- The three V's of bigdata.
+- Describe Storing Big Data.
+- Selecting Big Data.
+- Explain Processing of Big Data.
+- Classify the structures of Big Data.
+- Need of Big Data.
+- List the sources of big data.
+- Define Big Data Analytics.
+- List the types of tools used in Big Data.
+- List and explain the applications of big data.
+- List the risks of Big Data.
+- State the importance of Intelligent data analysis.
+- Traditional vs. Big Data approach.
+4. Big Data Analytics
+- State the importance of big data analytics.
+- Explain Big Data Life Cycle.
+- State the Methodology in Big data Analytics.
+- List Core Deliverables.
+- List Key Stakeholders.
+- List the responsibilities of Data Analyst.
+- List the basic skills necessary for data analyst.
+- State the importance of Data Scientist.
+- Big Data Analytic Project.
+- Explain How to deal with Bigdata Analytic Project.
+- State Problem Definition.
+- Data collection.
+- Cleansing data.
+- Summarizing.
+- Data exploration.
+- Data Visualization.
+- Big data Analytic methods.
+- Importance of SQL in Data Analytics.
+- Importance of Charts & Graphs.
+Data Analysis Tools
+- R Programming.
+- Python for data analysis.
+- Julia.
+- SPSS.
+- MATLAB.
+- Octave.
+Advanced Methods
+- Role of Machine Learning for Data Analysis.
+- List association rules.
+- State importance of Decision trees.
+- State importance of Text Analytics.
+Big Data Technologies
+- State the importance of NOSQL.
+- List advantages of NOSQL.
+- State the importance of NEWSQL.
+- List advantages of NEWSQL.
+Hadoop
+- List advantages.
+- List Features.
+- List versions.
+- Explain Hadoop components.
+- Explain HADOOP Architecture.
+5. Cloud Computing
+- What is cloud computing.
+- Advantages and disadvantages of cloud computing.
+- Evolution of cloud computing.
+- Draw and explain NIST Visual Model of Cloud Computing.
+- List features of Cloud computing.
+- List and explain components of cloud computing.
+- List and explain Cloud computing technologies.
+- List and explain different service models in cloud computing.
+- Compare different service models.
+- List and explain different deployment models or types of clouds.
+- Differentiate between private cloud and public cloud.
+- Compare traditional data centre and Cloud storage.
+- Describe how data is managed in cloud (DBaaS).
+- Explain security concepts in cloud.
+- What is cloud simulator and List different types.

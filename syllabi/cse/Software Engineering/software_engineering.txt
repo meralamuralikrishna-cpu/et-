@@ -1,0 +1,128 @@
+1. Basics of Software Engineering Designs & Life Cycle Models
+- Know the Evolution and Impact of the Software Engineering.
+- Evolution of an Art to an Engineering Discipline.
+- A Solution to the Software Crisis?
+- Know the difference between Programs and Software Products.
+- Understand the evolution of Software Engineering Design:
+  - Early Computer Programming.
+  - High Level Language Programming.
+  - Control Flow-Based Design.
+  - Data Structure-Oriented Design.
+  - Data Flow-Oriented Design.
+  - Object Oriented Design.
+  - Other Developments.
+- Explain the Software Life Cycle Models:
+  - Classical Waterfall Model.
+  - Iterative Waterfall Model.
+  - Prototyping Model.
+  - Evolutionary Model.
+  - Spiral Model.
+  - AGILE Model.
+- Comparison of Different Life Cycle Models.
+2. Software Project Management
+- Software Project Manager.
+- Job Responsibilities of a Software Project Manager.
+- Skills Necessary for Software Project Management.
+- Know about Software Project Planning.
+- The SPMP Document.
+- Metrics for Project Size Estimation:
+  - Lines of Code.
+  - Function Point Metric.
+- Project Estimation Techniques:
+  - Empirical Estimation Technique.
+  - Heuristic Technique.
+- Staffing Level Estimations:
+  - Norden's Work.
+  - Putnam's Work.
+- Scheduling:
+  - Work Break Down Structure.
+  - Activity Networks.
+  - Gantt Charts.
+  - PERT Charts.
+- Learn how to do Staffing.
+- Who is a Good Software Engineer?
+- Risk Management:
+  - Risk Identification.
+  - Risk Assessment.
+  - Risk Containment.
+3. Requirement Analysis & Specifications
+- Requirements Gathering and Analysis.
+- Software Requirement Specifications.
+- List Contents of the SRS Document.
+- Explain Functional Requirements.
+- Describe Procedure to identify the Functional Requirements.
+- How to Document the Functional Requirements.
+- Explain requirements Traceability.
+- List Characteristics of a Good SRS Document.
+- Give Examples of Bad SRS Document.
+- Explain Organization of the SRS Document.
+4. Software Design, Coding
+Software Design
+- What is a good Software Design?
+- Define and Classify Cohesion and Coupling.
+- Classification of Cohesiveness.
+- Classification of Coupling.
+- Approaches of Software Design:
+  - Function-Oriented Design.
+  - Object-Oriented Design.
+  - Function-Oriented vs Object-Oriented Design.
+User Interface Design
+- List the Characteristics of a good User Interface.
+- Understand the Basic Concepts.
+- User Guidance and Online Help.
+- Mode Based vs Modeless Interface.
+- Graphical User Interface (GUI) vs Text-Based User Interface.
+- Types of User Interface:
+  - Command Language Based Interface.
+  - Menu Based Interface.
+  - Direct Manipulation Interfaces.
+- Component Based GUI Development Window System and Types of Widgets.
+Unified Modeling Language (UML)
+- List the goals of UML.
+- Role of UML in Object oriented Design.
+- List and explain Building blocks of UML.
+- List different symbols used in UML notation.
+- Classify and list standard UML diagrams.
+- Know the purpose of Class diagram and draw simple class diagrams.
+- Use case diagram.
+- Define the term Use case.
+- Know the purposes of Use case diagram.
+- Learn to draw the Use case diagram.
+- Interaction diagram.
+- State the purpose of Interaction diagram.
+- List interaction diagrams (sequence & collaboration).
+- Learn to draw the Interaction diagrams.
+Software Coding
+- Understand the concept of Software Coding.
+- Coding Standards and Guidelines.
+- Code Review.
+- Code Walk-Throughs.
+- Code Inspection.
+- Clean Room Testing.
+- Software Documentation.
+- Software Testing.
+5. Testing, Debugging, Reliability, Quality Management & Maintenance
+Software Testing
+- Understand Testing.
+- What is Testing?
+- Differentiate Verification and Validation.
+- List 3 Designs of Test Cases.
+- Compare Testing in the Large vs Testing in the Small.
+- Explain Unit Testing.
+- Explain Black box Testing and White Box Testing.
+- Explain Open source software testing tools: Selenium, Bugzilla.
+Debugging
+- Explain Debugging Approaches.
+- List the Debugging Guidelines.
+- Explain Program Analysis Tools (Static Analysis Tools & Dynamic Analysis).
+- List and Explain Integration Testing.
+- Explain System Testing.
+- Explain Performance Testing.
+Software Reliability and Quality
+- Understand the concept of Software Reliability.
+- Differentiate Hardware Reliability and Software Reliability.
+- List the different Reliability Metrics.
+- Understand the Reliability Growth Modeling.
+- State the importance of Statistical Testing.
+- Explain Software Quality Management systems.
+- Define SEI Capability Maturity Model.

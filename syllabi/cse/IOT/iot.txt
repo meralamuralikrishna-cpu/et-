@@ -1,0 +1,97 @@
+1. Introduction of IoT
+Introduction
+- Define IoT and list its features.
+- List the components of IoT: hardware, software, technology and protocols.
+- List applications and various technologies of IoT.
+- List advantages and disadvantages of IoT.
+- Describe various connecting technologies.
+- Sensors:
+  - Need of sensor.
+  - Features of sensors.
+  - Classify sensors based on output and data types.
+- Define actuator and list its types.
+- List and explain functional components of IoT.
+- Explain service oriented architecture of IoT.
+- List IoT challenges.
+Various Connectivity Technologies in IoT
+- 6LoWPAN Technologies.
+- Features.
+- Addressing.
+- List and explain different packet formats.
+- Explain 6LoWPAN protocol stack architecture.
+- List and explain routing protocols (LOADng, RPL).
+RFID Technologies
+- What is RFID?
+- List the features.
+- Explain working principle.
+- Applications.
+2. Data Protocols
+Message Queue Telemetry Transport (MQTT)
+- Define and explain MQTT.
+- List components, methods and applications.
+- Define and explain Secure MQTT.
+Constrained Application Protocol (CoAP)
+- Define and explain CoAP.
+- List and explain CoAP message types.
+Extensible Messaging and Presence Protocol (XMPP)
+- List features of XMPP.
+- Explain XMPP.
+- Describe core XMPP technologies.
+- List applications of XMPP.
+Advanced Message Queuing Protocol (AMQP)
+- List features of AMQP.
+- Explain AMQP in detail.
+- List applications of XMPP.
+3. Communication Technologies
+IEEE 802.15.4
+- List features of IEEE 802.15.4.
+- Explain IEEE 802.15.4.
+- List IEEE 802.15.4 variants.
+- List and explain IEEE 802.15.4 types.
+Zigbee
+- What is Zigbee?
+- List features, components, different topologies, types and applications of Zigbee.
+- Explain different topologies of Zigbee.
+- Explain Zigbee types.
+Near Field Communication (NFC)
+- What is NFC?
+- List types and applications of NFC.
+- Explain working principle of NFC.
+- Describe modes of operation of NFC.
+Bluetooth
+- What is the purpose of Bluetooth?
+- List features, functions and applications of Bluetooth.
+- Explain Bluetooth technology in detail.
+- Describe Piconet.
+4. Wireless Sensor Networks
+- What is Wireless Sensor Network and list its applications.
+- List and types of Sensor Networks:
+  - Single Source Single Object Detection.
+  - Single Source Multiple Object Detection.
+  - Multiple Source Single Object Detection.
+  - Multiple Source Multiple Object Detection.
+- What are the challenges in Wireless Sensor Networks?
+- Explain node behaviour in WSNs.
+- Explain Information theoretic self-management in WSN.
+- Applications of WSN.
+- Explain Wireless Multimedia Sensor Networks (WMSN).
+- Explain Stationary Wireless Sensor Networks.
+- Explain Mobile Wireless Sensor Networks.
+- What is Machine to Machine Communications (M2M)?
+- List applications and features of M2M.
+- List and explain M2M sensor nodes.
+5. Role of IoT
+- Explain role of IoT in automation of the following applications.
+- State the importance of automation in IoT.
+- List automation applications of IoT.
+- List advantages of IoT in automation.
+- List disadvantages of IoT in automation.
+- What is the impact of IoT on Industrial Automation?
+- List types of Industrial Automation.
+- Healthcare applications.
+- Smart Home.
+- Smart Cities.
+- Smart Classrooms.
+- Smart Energy.
+- Smart Transportation and Mobility.
+- Smart Factory.

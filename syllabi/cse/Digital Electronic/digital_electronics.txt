@@ -1,0 +1,101 @@
+1. Number Systems, Boolean Algebra, Logic Gates and Combinational Circuits
+Number Systems
+- List the various number systems used in digital Computer.
+- Explain Decimal, Binary, Octal, Hexadecimal number systems.
+- Convert decimal number to other base conversion:
+  - Decimal to Binary.
+  - Decimal to Octal.
+  - Decimal to Hexadecimal.
+- Convert binary number to other base conversion:
+  - Binary to Decimal.
+  - Binary to Octal.
+  - Binary to Hexadecimal.
+- Convert octal number to other base conversion:
+  - Octal to Decimal.
+  - Octal to Binary.
+  - Octal to Hexadecimal.
+- Convert hexadecimal to other base conversion:
+  - Hexadecimal to Decimal.
+  - Hexadecimal to Binary.
+  - Hexadecimal to Octal.
+Binary Number Representation
+- Define Binary numbers representation.
+- List the types of Binary numbers representation.
+- Explain Unsigned binary number representation.
+- Explain Signed binary number representation.
+Binary Coded Decimal (BCD)
+- Define Binary Coded Decimal (BCD) coding scheme.
+- List the types of Binary Coded Decimal (BCD).
+- Draw and explain 8421 code.
+- Draw and explain 2421 code.
+- Draw and explain 8 4-2-1 code.
+Boolean Algebra
+- Explain AND, OR, NOT operations with truth tables.
+- Explain the working of EX-OR and EX-NOR operations with truth tables.
+- List the different postulates in Boolean algebra.
+- State De-Morgan's theorems.
+- Prove De-Morgan's theorems using truth tables.
+- Apply De-Morgan's theorems and other postulates of Boolean algebra to simplify the given Boolean expression.
+- Write Boolean expression for given truth table:
+  - Using Sum-Of-Products (SOP) method.
+  - Using Product-Of-Sums (POS) method.
+- Use K-Map to simplify Boolean expression (up to 4 variables):
+  - Two variable K-Map.
+  - Three variable K-Map.
+  - Four variable K-Map.
+Logic Gates
+- Define Logic gate.
+- List basic gates.
+- Define OR gate.
+- Explain OR gate with logic symbol and truth table.
+- Define AND gate.
+- Explain AND gate with logic symbol and truth table.
+- Define NOT gate.
+- Explain NOT gate with logic symbol and truth table.
+- What is universal gate? List universal gates.
+- Define NOR gate.
+- Explain NOR gate with logic symbol and truth table.
+- Define NAND gate.
+- Explain NAND gate with logic symbol and truth table.
+- Define EX-OR and EX-NOR gates.
+- Explain the working of EX-OR and EX-NOR gates with truth tables.
+- Implement AND, OR, NOT, EX-OR gates using NAND gates only.
+- Implement AND, OR, NOT, EX-OR gates using NOR gate only.
+Basic Combinational Circuits
+- Define the Half Adder. Explain the function of Half Adder.
+- Draw Half-Adder circuit using an exclusive OR and an AND gate.
+- Draw a Half-Adder using only NAND gates or only NOR gates.
+- Define the Full Adder. Explain the function of Full Adder.
+- Construct Full Adder using two Half-Adders and an OR gate.
+2. Flip-Flops & Counters
+Flip-Flops
+- List the details of different logic families.
+- Define positive and negative logic levels.
+- Define Flip-flop.
+- Draw and explain the basic principle of operation of a Flip-flop.
+- Define Latch.
+- Explain the working of a NAND latch circuit with truth table and timing diagram.
+- Explain the working of a NOR latch circuit with truth table and timing diagram.
+- Differentiate between Latch and Flip-flop.
+- Explain with block diagram, waveforms and truth tables the working of:
+  - RS Flip-flop.
+  - RST Flip-flop.
+  - D Flip-flop.
+  - JK Flip-flop.
+  - T Flip-flop.
+- Draw and explain the need for a Master-Slave flip-flop.
+- Explain the working of a Master-Slave flip-flop using suitable circuit diagram and truth table.
+Counters
+- Define Counter.
+- List the types of counters.
+- Define Synchronous counter.
+- Define Asynchronous counter.
+- Distinguish between asynchronous and synchronous counters.
+- Draw and explain Module-10 (decade) Asynchronous counter circuit diagram with waveforms and truth tables.
+- Draw and explain Module-8 synchronous counter circuit diagram with waveforms and truth tables.
+- Draw and explain Module-16 synchronous counter circuit diagram with waveforms and truth tables.
+- List the advantages of synchronous counters.
+- Programmable counter.
+- Draw and explain the need for a Programmable counter.
+- Explain how to design Programmable counter circuit diagram.
+- List the applications of counter.

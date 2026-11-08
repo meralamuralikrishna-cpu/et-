@@ -1,0 +1,67 @@
+1. Introduction to Operating Systems
+- Define an operating system.
+- Discuss history of operating system.
+- Discuss about various types of operating systems.
+- Distinguish spooling and buffering.
+- Explain the concepts multiprogramming and timesharing.
+- Differentiate between distributed and real time systems.
+- Describe multiprocessor systems.
+- Describe the operating system components.
+- Discuss operating system services.
+- Define system call with an example.
+- List and explain different types of system calls.
+- Define single user, multi user operating system structure.
+2. Process Management
+- Define process and process control block.
+- Explain process state diagram.
+- Describe process creation and termination.
+- Discuss the relation between processes.
+- Define Thread and describe multithreading.
+- Explain scheduling concepts.
+- Describe scheduling queues and schedulers.
+- Explain CPU scheduling and scheduling criteria.
+- Explain various scheduling algorithms:
+  - FCFS
+  - SJF
+  - Round Robin
+  - Priority
+  - Multilevel Scheduling
+3. Synchronization & Deadlocks
+- Describe semaphores.
+- Explain inter process communication.
+- Define Deadlock.
+- State the necessary conditions for arising deadlocks.
+- State various techniques for deadlock prevention.
+- Discuss Deadlock avoidance and detection.
+- Describe the process of recovering from deadlock.
+4. Memory Management
+- Describe briefly address binding, dynamic loading, dynamic linking.
+- Define overlays.
+- Describe briefly on swapping.
+- Explain single partition allocation.
+- Explain multiple partition allocation.
+- Explain the concept of fragmentation.
+- Explain paging concept.
+- Explain how logical address is translated into physical address.
+- Explain segmentation and segmentation with paging.
+- Define virtual memory techniques.
+- Describe demand paging.
+- Describe page replacement.
+- Discuss on page replacement algorithms:
+  - FIFO
+  - LRU
+  - Optimal
+- Explain the concept of thrashing.
+- Explain working set model and page fault frequency.
+5. Disk Scheduling and File Management
+- List out various disk performance parameters.
+- Disk scheduling policies:
+  - FIFO
+  - SSTF
+  - SCAN
+- Define file management.
+- List and explain various file operations.
+- List and explain various access methods.
+- List and explain various allocation methods.
+- List and explain directory structure.
+- Explain disk organization and structure.

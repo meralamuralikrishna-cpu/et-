@@ -1,0 +1,99 @@
+1. Object oriented programming concepts and Basics of java and over loading
+- Know about object-oriented programming
+- Compare procedure-oriented programming and object-oriented programming
+- List and explain features of object-oriented programming
+- Importance of Java in Internet programming.
+- Explain features of Java. Define Byte codes of Java, JVM.
+- How to write and executing a Java program. List different keywords and comment statements in Java.
+- Explain data types, scope and life time of variables.
+- Describe conversion and casting features.
+- Apply one-dimensional and two-dimensional arrays give example programs.
+- Illustrates usage of conditional and iteration statements of Java with an example programs.
+- Describe usage of jump statements, break, and continue statements.
+- Describe how to create classes and objects.
+- Demonstrate Usage of new operator and methods.
+- Explain usage of constructors with an example programs.
+- Apply method overloading and construction overloading in applications.
+- Describe usage of 'this' pointer with example.
+- Explain usage of static in variables, methods, and blocks.
+- Explain about string classes.
+- Usage of command-line arguments.
+2. Concepts of inheritance, overriding, Interfaces and Packages
+- Explain implementation of inheritance with an example program.
+- Illustrate how to implement multilevel inheritance with an example program.
+- Explain method overriding and usage of super keyword.
+- Describe concept of Interfaces.
+- Define an Interface.
+- Differences between abstract classes and interface.
+- Explain how to implement interfaces with sample program.
+- Define a package.
+- Explain the concept of class path.
+- Describe concept of Access protection.
+- Illustrate the mechanism of importing packages.
+- Give simple application to design packages with sample programs.
+3. I/O Streams and Collections
+- List different types of I/O streams.
+- Explain how to read and write data through console input and output streams.
+- Explain various file access operation by using FileStreams.
+- Explain sample programs on above streams.
+- What is collection frame work and Hierarchy of collection frame work.
+- List Collection Interfaces and explain the following with examples:
+  - List
+  - Set
+  - Queue
+  - Deque
+- List Collection classes and explain the following with examples:
+  - ArrayList
+  - LinkedList
+  - HashSet
+- Iterator
+- How to access a Collection via an Iterator?
+4. Exception handling and Multi threaded programming
+- Describe sources of errors.
+- Give advantages of exception handling.
+- Types of exceptions:
+  - Checked
+  - Unchecked
+- Apply following key words to handling exceptions through sample programs:
+  - Try
+  - Catch
+  - Finally
+  - Throw
+  - Throws
+- Explain concept of Multi-catch statements with example.
+- Explain how to write nested try in exception handling with example.
+- Describe built in exceptions.
+- Describe multithreading.
+- Explain Thread life cycle and states.
+- Explain how to Creating single thread with example program.
+- Explain how to Creating multi thread with example program.
+- Illustrate thread priorities in multiple threads with an example.
+- Describe the concept of synchronization with example program.
+5. Applets, AWT, Event Handling
+- Describe the basics of Applets – Life cycle of an applet.
+- Describe steps for design and execute sample applet program.
+- Explain Graphics class methods:
+  - Update()
+  - Paint()
+  - Drawing Lines
+  - Rectangle
+  - Circles
+  - Polygons
+- Working with Color Font classes.
+- Describe AWT classes.
+- Explain how to design Frame window with example.
+- Describe Types of Events.
+- List and explain sources of events.
+- List and explain different event classes.
+- List and explain event listener interfaces.
+- Demonstrate event handling mechanism.
+- Demonstrate handling mouse events with sample program.
+- Demonstrate handling keyboard events with sample program.
+- Explain how to use AWT controls in applet programming:
+  - a. Labels.
+  - b. Buttons.
+  - c. TextFields
+  - d. Checkboxes.
+  - e. Lists.
+  - f. Choice
+  - g. Scrollbars

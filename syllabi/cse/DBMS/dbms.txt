@@ -1,0 +1,71 @@
+1. Concepts of DBMS & RDBMS
+- Define Database Management System (DBMS).
+- List the advantages of DBMS.
+- Explain Database Abstraction, Data Independence.
+- Define Instances and Schemas.
+- Explain Data Models.
+- Define Database languages DDL, DML, TCL.
+- Explain Database Administrator, Users and Database System Architecture with diagram.
+- Define Entity, Entity sets, Relationship, Relationship sets, Super Key, Candidate Key and Primary Key, Foreign Key.
+- Explain Mapping Cardinalities.
+- List the symbols used in ER model.
+- Know The Entity-Relationship Model.
+- Reduce the ER-diagrams to tables.
+- Explain Generalization, Specialization & Aggregation.
+- Explain Functional Dependencies, Normalizations– 1 NF, 2 NF and 3NF.
+2. Concepts of SQL
+- Explain SQL and benefits of SQL.
+- Describe about Embedded SQL and Lexical conventions.
+- Describe Naming of the Objects and parts and how to refer them.
+- Explain literals & different data types like character, number, long, date, raw and longraw etc.
+- Illustrate the comments within SQL Statement.
+- Explain SQL Operators.
+- Describe Data Definition Language commands CREATE, ALTER and DROP.
+- Explain integrity constraints through creating a table and altering table.
+- Describe Data Manipulation Language commands INSERT, UPDATE and DELETE.
+- Explain SELECT statement with WHERE, ORDER BY, GROUP BY and HAVING clauses with examples.
+- List and explain single row (Number, character, date and conversion) functions.
+- List and Explain group functions.
+- Explain Transaction Control Commands COMMIT, SAVEPOINT, ROLLBACK, GRANT, and REVOKE.
+- Explain Sub Queries with examples.
+- Explain Joins (Equi Join, Non-Equi Joins, Inner Join, Outer Join, cross join and Self join) with syntax and examples.
+3. PL/SQL
+- Explain PL/SQL Block structure.
+- List the features of PL/SQL.
+- Explain the data types of PL/SQL.
+- Declaration of variables.
+- Explain PL/SQL tables and user defined records.
+- Explain Input/Output statements.
+- Explain decision making statements and illustrate.
+- Explain looping statements and illustrate.
+- Define procedure and function.
+- Describe the advantages of subprograms.
+- Explain handling procedures and functions with example programs.
+- Explain the parameter modes in PL/SQL (in, out and in out).
+4. Advanced PL/SQL
+- Define cursor.
+- Classify cursors.
+- Explain implicit cursor with example.
+- Explain explicit cursors with example.
+- Define trigger.
+- List Advantages of triggers.
+- Explain database triggers.
+5. Concepts of NoSQL & MongoDB
+No SQL
+- List features of NOSQL.
+- Compare RDBMS and NoSQL.
+- List the Advantages and Disadvantages of NoSQL.
+- Know about the ACID and BASE system.
+- Compare ACID and BASE properties.
+- NoSQL:
+  - Key-value stores.
+  - Column-oriented.
+  - Graph oriented Databases.
+  - Document oriented Databases.
+MongoDB
+- What is mongoDB.
+- List the advantages of MongoDB.
+- Explain the Creation, Dropping, Creation of Collection.
+- Dropping of Collection of Database in MongoDB.
+- Explain the Datatypes of MongoDB.
+- Explain Inserting Document, Query Document, Update Document, Deleting Document & Sorting Document.

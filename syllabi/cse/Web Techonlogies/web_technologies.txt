@@ -1,0 +1,123 @@
+1. Principles of Web Designing and HTML Introduction
+Understand the principles of Web Designing
+- Basic web Terminology.
+- Describe Anatomy of web page.
+- Understand different Web page elements.
+- Navigate through web pages.
+- Narrate steps in building web site.
+- Narrate steps in launching.
+- Narrate maintaining web site.
+HTML Introduction
+- Introduction and Overview of HTML.
+- Discuss the rules for designing a HTML document.
+- Explain the structure of HTML document.
+- Define HTML element and Attribute.
+- Study the basic tags in HTML <html>, <head>, <title>, <body>.
+- Study the header tags <h1> to <h6>.
+- Discuss the Physical formatting tags <b>, <i>, <u>, <strike>, <sub>, <sup>, <big>, <small>, <tt>.
+- Discuss the Logical formatting tags <q>, <strong>, <cite>, <ins>, <del>, <em>.
+- Discuss the <marquee> with attributes.
+- List Character entities.
+- Explain the List tags like <ul>, <ol>, <li>, <dl>, <menu> with attributes.
+- Describe the setting of tables.
+- Describe the tags <table>, <tr>, <td>, <th>, <tbody>, <thead>, <tfoot>.
+2. Understand Various HTML Tags and Usage of Style Sheets
+- Explain the link and imaging tags <a>, <img> with attributes.
+- Explain <object> tag with attributes.
+- Explain the tags <form>, <input>, <button>, <label>, <select>, <option>, <textarea>, <legend> with attributes.
+- Explain the tags <frame>, <frameset>, <noframe>, <iframe> with attributes.
+- Illustrate about cascading style sheets.
+- Understand the level of styles inline, internal and embedded style sheets.
+- Explain ID and Class selectors in CSS.
+- Explain about Color and background properties.
+- Explain about Box properties like Border, position, margin, padding of elements.
+3. Understand XML and JavaScript
+XML
+- Understand XML.
+- Describe how to organize data in the form of XML.
+- Explain the rules for designing XML document.
+- Understand the significance of Namespace.
+- List the various applications of XML.
+Types of Scripting – JavaScript
+- Differentiate between Client-side and Server-side scripting.
+- List Client side and server side scripting languages.
+- Describe the features of Java Script.
+- Placing JavaScript code in HTML.
+Functions
+- Understand functions.
+- Know how to define and call a function.
+- Know how to pass parameters.
+- Understand the purpose of GetElementById method.
+- Describe the global functions provided by JavaScript.
+- Form Handling in Java Script.
+Arrays
+- Understand single and multi dimensional arrays.
+- Design small programs using arrays.
+JavaScript Objects
+- Math object.
+- String object.
+- Date object.
+- Boolean and Number object.
+Events
+
+- Describe events in JavaScript.
+4. JQuery
+- Define JQuery.
+- List the features of JQuery.
+- List JQuery plugins.
+- Explain the steps for to include JQuery in Web Pages.
+- Explain JQuery Syntax with example program.
+- Describe the jQuery Selectors:
+  - Accessing HTML elements by using Element Selectors.
+  - ID, Class Selectors.
+- Explain the JQuery Document Ready Event.
+- Describe the jQuery Event handling methods:
+  - Mouse Events.
+  - Keyboard Events.
+  - Form Events.
+  - Document/Window events.
+- Explain effects of JQuery:
+  - hide, show.
+  - fadeIn, fadeOut, fadeToggle, fadeTo.
+  - slideDown, slideUp, slideToggle.
+- Explain Functions in JQuery like text(), html(), val(), attr(), css().
+5. Web Servers and Server-side Scripting Using PHP
+Web Servers
+- Understand the architecture of a Web server.
+- List the various web servers.
+- Illustrate the various HTTP request types and their difference.
+- Compare the properties of IIS, and Apache.
+- Understand the Fundamentals of PHP.
+- Explain how to combine HTML and PHP.
+- Explain how to access HTML, PHP documents from web servers.
+PHP Fundamentals
+- List various Data types and explain them with examples.
+- Explain how to declare Variables and Constants.
+- List and explain string manipulation functions.
+PHP Arrays
+- Understand Arrays.
+- Explain types of arrays.
+- Design small programs using arrays.
+Form Handling in PHP
+- Explain form handling in PHP.
+- Access elements of form using $_GET, $_POST.
+PHP Database Connectivity
+- Know how to access Mysql Database.
+- List and explain mysql database functions in PHP.
+- Explain the steps of connecting to a Database.
+- Know about retrieving data from a table.
+- Know about inserting data into a table.
+- Know about updating the data in a table.
+- Know about deleting data from a table.
+- Design some simple programs to insert, delete, update and retrieve data from database.
+Cookies
+- Define Cookie.
+- Know how to create and delete a cookie.
+- Know the purpose of cookie.
+Sessions
+- Define Session.
+- Understand how to create a session.
+- Know how to destroy a session.
+- Know the purpose of session.
+- Differentiate Sessions and Cookies.
+- Passing data from one web page to other webpage using query string.
