@@ -1,5 +1,16 @@
 /** AP ECET 2026 syllabus — Diploma Holders in Engineering (CSE) */
 
+import digitalElectronics from '../../syllabi/cse/Digital Electronic/digital_electronics.txt?raw'
+import softwareEngineering from '../../syllabi/cse/Software Engineering/software_engineering.txt?raw'
+import computerOrganization from '../../syllabi/cse/Computer Organization/computer_organization.txt?raw'
+import dbms from '../../syllabi/cse/DBMS/dbms.txt?raw'
+import operatingSystems from '../../syllabi/cse/Operating systems/operating_system.txt?raw'
+import javaProgramming from '../../syllabi/cse/Java Programming/java_programming.txt?raw'
+import webTechnologies from '../../syllabi/cse/Web Techonlogies/web_technologies.txt?raw'
+import bigDataCloud from '../../syllabi/cse/BigData & Cloud Computing/bigdata_cloudcomputing.txt?raw'
+import iot from '../../syllabi/cse/IOT/iot.txt?raw'
+import pythonProgramming from '../../syllabi/cse/Python Programming/python_programming.txt?raw'
+
 export const SUBJECTS = [
   {
     id: 'math',
@@ -675,6 +686,50 @@ export const SUBJECTS = [
     ],
   },
 ]
+
+// Keep the editable source syllabi in `syllabi/cse` as the source of truth for
+// CSE sub-topics, so adding detail there updates the tracker at build time.
+function syllabusPoints(raw) {
+  let section = ''
+  const points = []
+  const pointLessons = []
+
+  for (const sourceLine of raw.split(/\r?\n/)) {
+    const line = sourceLine.trim()
+    if (!line) continue
+
+    if (/^[-•*]\s+/.test(line)) {
+      const point = line.replace(/^[-•*]\s+/, '').trim()
+      points.push(point)
+      pointLessons.push(section)
+      continue
+    }
+
+    section = line.replace(/^\d+(?:\.\d+)*[.)]?\s*/, '').trim()
+  }
+
+  return { points, pointLessons }
+}
+
+const CSE_SYLLABUS_FILES = {
+  'cse-digital': digitalElectronics,
+  'cse-se': softwareEngineering,
+  'cse-co': computerOrganization,
+  'cse-dbms': dbms,
+  'cse-os': operatingSystems,
+  'cse-java': javaProgramming,
+  'cse-web': webTechnologies,
+  'cse-bigdata': bigDataCloud,
+  'cse-iot': iot,
+  'cse-python': pythonProgramming,
+}
+
+for (const unit of SUBJECTS.find((subject) => subject.id === 'cse').units) {
+  for (const topic of unit.topics) {
+    const source = CSE_SYLLABUS_FILES[topic.id]
+    if (source) Object.assign(topic, syllabusPoints(source))
+  }
+}
 
 export const STATUSES = [
   { id: 'todo', label: 'To do', short: 'To do', weight: 0 },

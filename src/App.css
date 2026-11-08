@@ -816,6 +816,49 @@
   gap: 0.55rem;
 }
 
+.lesson-group {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel-solid);
+}
+
+.lesson-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.7rem 0.75rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  font-size: 0.84rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.lesson-toggle:hover {
+  background: var(--paper);
+}
+
+.lesson-topic-count {
+  margin-left: auto;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.lesson-topics {
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0.65rem;
+  border-top: 1px solid var(--line);
+}
+
 .subtopic {
   display: flex;
   gap: 0.75rem;
@@ -1531,10 +1574,27 @@
 
 /* Test log, study planning, and responsive data tables */
 .test-summary, .quiz-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; margin: 0 0 1rem; }
-.tests-main { display: grid; min-height: 30vh; align-content: start; gap: .8rem; }
+.tests-main { position: relative; z-index: 1; display: grid; min-height: 30vh; align-content: start; gap: .8rem; }
+.tests-page { position: relative; z-index: 1; }
 .quiz-kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .test-summary .kpi, .quiz-kpis .kpi { min-width: 0; }
 .test-form, .planning-card, .tests-page > .chart-card { margin-bottom: 1rem; }
+.test-chart-grid { grid-template-columns: 1.2fr 1fr; margin-bottom: 1rem; }
+.test-score-chart { display: flex; align-items: end; gap: .75rem; min-height: 12rem; padding: .5rem .25rem 0; overflow-x: auto; }
+.test-score-column { display: grid; grid-template-rows: auto 8rem auto auto; justify-items: center; align-items: end; gap: .25rem; min-width: 3.25rem; color: var(--ink-soft); font-size: .7rem; }
+.test-score-column strong { color: var(--ink); font-size: .75rem; }
+.test-score-column span, .test-score-column small { white-space: nowrap; }
+.test-score-track { display: flex; align-items: end; width: 1.55rem; height: 100%; overflow: hidden; border-radius: 7px 7px 3px 3px; background: color-mix(in srgb, var(--ink) 8%, transparent); }
+.test-score-track i { display: block; width: 100%; min-height: 2px; border-radius: inherit; background: linear-gradient(180deg, #36a996, var(--teal-deep)); }
+.question-pie-wrap { display: flex; align-items: center; justify-content: center; gap: 1.35rem; min-height: 12rem; }
+.question-pie { display: grid; flex: 0 0 9rem; width: 9rem; aspect-ratio: 1; place-items: center; border-radius: 50%; }
+.question-pie > div { display: grid; width: 62%; aspect-ratio: 1; align-content: center; justify-items: center; border-radius: 50%; background: var(--panel-solid); }
+.question-pie strong { color: var(--ink); font-family: var(--display); font-size: 1.5rem; }
+.question-pie span { color: var(--ink-soft); font-size: .7rem; }
+.question-pie-legend { display: grid; gap: .65rem; margin: 0; padding: 0; list-style: none; font-size: .78rem; }
+.question-pie-legend li { display: grid; grid-template-columns: .65rem 1fr auto; align-items: center; gap: .45rem; }
+.question-pie-legend i { width: .6rem; height: .6rem; border-radius: 50%; }
+.question-pie-legend strong { color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .form-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; }
 .form-grid label, .mistake-fields label { display: grid; gap: .3rem; color: var(--ink-soft); font-size: .78rem; font-weight: 700; }
 .form-grid input, .form-grid select, .form-grid textarea, .mistake-fields input { min-width: 0; width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: .55rem .65rem; color: var(--ink); background: var(--panel-solid); }
@@ -1583,6 +1643,8 @@
 .app.dark-mode .tab.active, .app.dark-mode .view-tab.active { background: #365c59; border-color: #365c59; color: #f1fbf8; }
 
 @media (max-width: 720px) {
+  .test-chart-grid { grid-template-columns: 1fr; }
+  .question-pie-wrap { justify-content: flex-start; }
   .test-summary, .quiz-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .mistake-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }

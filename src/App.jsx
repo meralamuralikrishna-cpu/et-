@@ -158,6 +158,7 @@ function TopicCard({
   tests = [],
 }) {
   const [open, setOpen] = useState(false)
+  const [openLessons, setOpenLessons] = useState({})
   const counts = topic.points.reduce(
     (acc, _, i) => {
       const s = entry.subs?.[i]?.strength || 'unrated'
@@ -171,6 +172,63 @@ function TopicCard({
   const quizAttempted = quizTests.reduce((sum, test) => sum + test.attempted, 0)
   const quizCorrect = quizTests.reduce((sum, test) => sum + test.correct, 0)
   const quizAccuracy = quizAttempted ? Math.round(quizCorrect / quizAttempted * 100) : null
+  const lessonGroups = topic.pointLessons
+    ? topic.points.reduce((groups, point, index) => {
+        const title = topic.pointLessons[index] || 'Topics'
+        let group = groups[groups.length - 1]
+        if (!group || group.title !== title) {
+          group = { title, indexes: [] }
+          groups.push(group)
+        }
+        group.indexes.push(index)
+        return groups
+      }, [])
+    : [{ title: '', indexes: topic.points.map((_, index) => index) }]
+
+  const renderSubtopic = (i) => {
+    const point = topic.points[i]
+    const sub = entry.subs?.[i] || { strength: 'unrated', revised: false }
+    const due = isReviewDue(sub)
+    const reviseClass = due
+      ? 'revise-btn due'
+      : sub.revised
+        ? 'revise-btn on'
+        : 'revise-btn'
+    const reviseLabel = due
+      ? sub.revised
+        ? 'Due again'
+        : 'Revise'
+      : sub.revised
+        ? 'Revised ✓'
+        : 'Revise'
+
+    return (
+      <li key={i} className={`subtopic strength-${sub.strength}`}>
+        <div className="subtopic-main">
+          <span className="subtopic-title">{point}</span>
+          <StrengthButtons
+            value={sub.strength}
+            onSelect={(strength) => onSetStrength(topic.id, i, strength)}
+          />
+        </div>
+        <button
+          type="button"
+          className={reviseClass}
+          onClick={() => onToggleRevised(topic.id, i)}
+          disabled={sub.strength === 'unrated'}
+          title={
+            due
+              ? 'Mark this revision done — next review is scheduled automatically'
+              : sub.revised
+                ? 'Click to undo and put back in revision today'
+                : 'Mark revised'
+          }
+        >
+          {reviseLabel}
+        </button>
+      </li>
+    )
+  }
 
   return (
     <article className={`topic status-${entry.status}`}>
@@ -229,50 +287,35 @@ function TopicCard({
       {open && (
         <div className="topic-body">
           <ul className="subtopic-list">
-            {topic.points.map((point, i) => {
-              const sub = entry.subs?.[i] || {
-                strength: 'unrated',
-                revised: false,
-              }
-              const due = isReviewDue(sub)
-              const reviseClass = due
-                ? 'revise-btn due'
-                : sub.revised
-                  ? 'revise-btn on'
-                  : 'revise-btn'
-              const reviseLabel = due
-                ? sub.revised
-                  ? 'Due again'
-                  : 'Revise'
-                : sub.revised
-                  ? 'Revised ✓'
-                  : 'Revise'
+            {lessonGroups.map((group, index) => {
+              if (!group.title) return group.indexes.map(renderSubtopic)
+              const isLessonOpen = Boolean(openLessons[index])
               return (
-                <li key={i} className={`subtopic strength-${sub.strength}`}>
-                  <div className="subtopic-main">
-                    <span className="subtopic-title">{point}</span>
-                    <StrengthButtons
-                      value={sub.strength}
-                      onSelect={(strength) =>
-                        onSetStrength(topic.id, i, strength)
-                      }
-                    />
-                  </div>
+                <li className="lesson-group" key={`${group.title}-${index}`}>
                   <button
                     type="button"
-                    className={reviseClass}
-                    onClick={() => onToggleRevised(topic.id, i)}
-                    disabled={sub.strength === 'unrated'}
-                    title={
-                      due
-                        ? 'Mark this revision done — next review is scheduled automatically'
-                        : sub.revised
-                          ? 'Click to undo and put back in revision today'
-                          : 'Mark revised'
+                    className="lesson-toggle"
+                    aria-expanded={isLessonOpen}
+                    onClick={() =>
+                      setOpenLessons((current) => ({
+                        ...current,
+                        [index]: !current[index],
+                      }))
                     }
                   >
-                    {reviseLabel}
+                    <span className="chevron" aria-hidden="true">
+                      {isLessonOpen ? '▾' : '▸'}
+                    </span>
+                    <span>{group.title}</span>
+                    <span className="lesson-topic-count">
+                      {group.indexes.length} topics
+                    </span>
                   </button>
+                  {isLessonOpen && (
+                    <ul className="lesson-topics">
+                      {group.indexes.map(renderSubtopic)}
+                    </ul>
+                  )}
                 </li>
               )
             })}
