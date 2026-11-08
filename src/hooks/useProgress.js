@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import {
   SUBJECTS,
   STATUSES,
@@ -9,11 +9,6 @@ import {
   examPhase,
   isHighMarkTopic,
 } from '../data/syllabus'
-
-const STORAGE_KEY = 'ap-ecet-tracker-v3'
-const OLD_STORAGE_KEY = 'ap-ecet-2026-progress-v2'
-const LEGACY_KEY = 'ap-ecet-2026-progress-v1'
-const ACTIVITY_KEY = 'ap-ecet-2026-activity-v1'
 
 /** Days until next review after each successful revision, by strength. */
 const REVIEW_INTERVALS = {
@@ -49,17 +44,6 @@ export function localDayKey(date = new Date()) {
 
 function emptyActivity() {
   return { days: {} }
-}
-
-function loadActivity() {
-  try {
-    const raw = localStorage.getItem(ACTIVITY_KEY)
-    if (!raw) return emptyActivity()
-    const saved = JSON.parse(raw)
-    return { days: saved?.days && typeof saved.days === 'object' ? saved.days : {} }
-  } catch {
-    return emptyActivity()
-  }
 }
 
 function bumpActivity(activity, kind = 'study') {
@@ -224,39 +208,6 @@ function emptyProgress() {
   return progress
 }
 
-function migrateLegacy(saved) {
-  const base = emptyProgress()
-  for (const id of Object.keys(base)) {
-    const old = saved[id]
-    if (!old) continue
-    const subs = { ...base[id].subs }
-    for (const key of Object.keys(subs)) {
-      const checked = !!old.checked?.[key]
-      subs[key] = {
-        strength: checked
-          ? old.status === 'revised'
-            ? 'strong'
-            : 'average'
-          : 'unrated',
-        revised: old.status === 'revised' && checked,
-        revisedAt: null,
-        nextReviewAt: checked
-          ? old.status === 'revised'
-            ? toDateKey(addDays(new Date(), intervalDays('average', 0)))
-            : toDateKey(new Date())
-          : null,
-        reviewCount: old.status === 'revised' && checked ? 1 : 0,
-      }
-    }
-    base[id] = {
-      status: old.status || 'todo',
-      notes: old.notes || '',
-      subs,
-    }
-  }
-  return base
-}
-
 function normalizeSub(s) {
   if (!s) return emptySub()
   const strength = s.strength || 'unrated'
@@ -294,21 +245,6 @@ function normalizeProgress(saved) {
     base[id] = { status: saved[id].status || 'todo', notes: saved[id].notes || '', subs }
   }
   return base
-}
-
-function loadProgress() {
-  try {
-    const raw = localStorage.getItem(OLD_STORAGE_KEY)
-    if (raw) {
-      return normalizeProgress(JSON.parse(raw))
-    }
-
-    const legacy = localStorage.getItem(LEGACY_KEY)
-    if (legacy) return migrateLegacy(JSON.parse(legacy))
-    return emptyProgress()
-  } catch {
-    return emptyProgress()
-  }
 }
 
 function strengthMeta(id) {
@@ -574,17 +510,10 @@ export function buildAnalytics(progress) {
 }
 
 export function useProgress() {
-  const [savedData] = useState(() => {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null') } catch { return null }
-  })
-  const [progress, setProgress] = useState(() => savedData?.progress ? normalizeProgress(savedData.progress) : loadProgress())
-  const [activity, setActivity] = useState(() => savedData?.activity || loadActivity())
-  const [tests, setTests] = useState(() => Array.isArray(savedData?.tests) ? savedData.tests : [])
-  const [settings, setSettings] = useState(() => ({ examDate: '', dailyTarget: 5, darkMode: false, ...(savedData?.settings || {}) }))
-
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ progress, activity, tests, settings }))
-  }, [progress, activity, tests, settings])
+  const [progress, setProgress] = useState(emptyProgress)
+  const [activity, setActivity] = useState(emptyActivity)
+  const [tests, setTests] = useState([])
+  const [settings, setSettings] = useState({ examDate: '', dailyTarget: 5, darkMode: false })
 
   const analytics = useMemo(() => buildAnalytics(progress), [progress])
   const streak = useMemo(() => buildStreak(activity), [activity])
@@ -618,6 +547,8 @@ export function useProgress() {
     setTests(Array.isArray(imported.tests) ? imported.tests : [])
     setSettings({ examDate: '', dailyTarget: 5, darkMode: false, ...(imported.settings || {}) })
   }
+
+  const backupData = JSON.stringify({ progress, activity, tests, settings }, null, 2)
 
   function applyStrength(sub, strength) {
     const wasUnrated = !sub || sub.strength === 'unrated'
@@ -824,5 +755,6 @@ export function useProgress() {
     overall: analytics.totals,
     subjectStats: (subject) => subjectStats(subject, progress),
     tests, addTest, deleteTest, settings, updateSettings, replaceBackup,
+    backupData,
   }
 }

@@ -433,6 +433,7 @@ export default function App() {
     settings,
     updateSettings,
     replaceBackup,
+    backupData,
   } = useProgress()
 
   const [view, setView] = useState('syllabus')
@@ -442,7 +443,7 @@ export default function App() {
   const isCollegesRoute = window.location.pathname.replace(/\/$/, '') === '/colleges'
   const exportBackup = () => {
     const link = document.createElement('a')
-    link.href = URL.createObjectURL(new Blob([localStorage.getItem('ap-ecet-tracker-v3') || '{}'], { type: 'application/json' }))
+    link.href = URL.createObjectURL(new Blob([backupData], { type: 'application/json' }))
     link.download = 'ap-ecet-tracker-backup.json'
     link.click()
     URL.revokeObjectURL(link.href)
@@ -460,7 +461,7 @@ export default function App() {
   }
   const resetWithConfirm = () => {
     if (!window.confirm('Reset all tracker data, tests, settings and activity?')) return
-    if (!window.confirm('This removes the saved tracker data from this browser. Continue?')) return
+    if (!window.confirm('This clears the current tracker session. Continue?')) return
     resetAll()
   }
 
