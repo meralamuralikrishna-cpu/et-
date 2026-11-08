@@ -10,6 +10,8 @@ import webTechnologies from '../../syllabi/cse/Web Techonlogies/web_technologies
 import bigDataCloud from '../../syllabi/cse/BigData & Cloud Computing/bigdata_cloudcomputing.txt?raw'
 import iot from '../../syllabi/cse/IOT/iot.txt?raw'
 import pythonProgramming from '../../syllabi/cse/Python Programming/python_programming.txt?raw'
+import dataStructures from '../../syllabi/cse/datastructurethroughc/dsa.txt?raw'
+import networksCyberSecurity from '../../syllabi/cse/computer network and  cybersecurity/computernetwokrandcybersecurity.txt?raw'
 
 export const SUBJECTS = [
   {
@@ -711,10 +713,51 @@ function syllabusPoints(raw) {
   return { points, pointLessons }
 }
 
+function numberedSyllabusPoints(raw) {
+  const lines = raw.split(/\r?\n/)
+  const items = []
+  let firstHeading = ''
+
+  for (const sourceLine of lines) {
+    const line = sourceLine.trim()
+    const match = line.match(/^(\d+(?:\.\d+)*)(?:[.)])?\s+(.+)$/)
+    if (!match || /^\d{3,}$/.test(line)) {
+      if (!firstHeading && line && !/^CO\s+NO\b/i.test(line)) firstHeading = line
+      continue
+    }
+
+    items.push({ number: match[1], title: match[2].trim() })
+  }
+
+  const numbers = new Set(items.map((item) => item.number))
+  const points = []
+  const pointLessons = []
+
+  for (const item of items) {
+    const childPrefix = item.number.endsWith('.0')
+      ? `${item.number.slice(0, -2)}.`
+      : `${item.number}.`
+    const hasChildren = [...numbers].some((number) => number.startsWith(childPrefix))
+    if (hasChildren) continue
+
+    const parentNumber = item.number.includes('.')
+      ? item.number.slice(0, item.number.lastIndexOf('.'))
+      : ''
+    const parent = items.find((candidate) => candidate.number === parentNumber)
+      || items.find((candidate) => candidate.number === `${parentNumber}.0`)
+    points.push(item.title)
+    pointLessons.push(parent?.title || firstHeading || 'Topics')
+  }
+
+  return { points, pointLessons }
+}
+
 const CSE_SYLLABUS_FILES = {
   'cse-digital': digitalElectronics,
   'cse-se': softwareEngineering,
   'cse-co': computerOrganization,
+  'cse-ds': dataStructures,
+  'cse-cn': networksCyberSecurity,
   'cse-dbms': dbms,
   'cse-os': operatingSystems,
   'cse-java': javaProgramming,
@@ -727,7 +770,12 @@ const CSE_SYLLABUS_FILES = {
 for (const unit of SUBJECTS.find((subject) => subject.id === 'cse').units) {
   for (const topic of unit.topics) {
     const source = CSE_SYLLABUS_FILES[topic.id]
-    if (source) Object.assign(topic, syllabusPoints(source))
+    if (source) {
+      const parsed = topic.id === 'cse-ds' || topic.id === 'cse-cn'
+        ? numberedSyllabusPoints(source)
+        : syllabusPoints(source)
+      Object.assign(topic, parsed)
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   SUBJECTS,
   STATUSES,
@@ -514,6 +514,52 @@ export function useProgress() {
   const [activity, setActivity] = useState(emptyActivity)
   const [tests, setTests] = useState([])
   const [settings, setSettings] = useState({ examDate: '', dailyTarget: 5, darkMode: false })
+  const [ready, setReady] = useState(false)
+  const [loaded, setLoaded] = useState(false)
+  const [storageError, setStorageError] = useState('')
+  const saveQueue = useRef(Promise.resolve())
+
+  useEffect(() => {
+    let active = true
+    fetch('/api/data')
+      .then((response) => {
+        if (!response.ok) throw new Error('Could not load data.json')
+        return response.json()
+      })
+      .then((saved) => {
+        if (!active) return
+        setProgress(normalizeProgress(saved.progress))
+        setActivity(saved.activity || emptyActivity())
+        setTests(Array.isArray(saved.tests) ? saved.tests : [])
+        setSettings({ examDate: '', dailyTarget: 5, darkMode: false, ...(saved.settings || {}) })
+        setStorageError('')
+        setLoaded(true)
+        setReady(true)
+      })
+      .catch(() => {
+        if (!active) return
+        setStorageError('Could not load data.json. Start the app with npm run dev to save data.')
+        setReady(true)
+      })
+    return () => { active = false }
+  }, [])
+
+  useEffect(() => {
+    if (!ready || !loaded) return
+    const snapshot = JSON.stringify({ progress, activity, tests, settings })
+    saveQueue.current = saveQueue.current
+      .catch(() => {})
+      .then(async () => {
+        const response = await fetch('/api/data', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: snapshot,
+        })
+        if (!response.ok) throw new Error('Save failed')
+        setStorageError('')
+      })
+      .catch(() => setStorageError('Could not save data.json. Your latest changes may not be saved.'))
+  }, [progress, activity, tests, settings, ready, loaded])
 
   const analytics = useMemo(() => buildAnalytics(progress), [progress])
   const streak = useMemo(() => buildStreak(activity), [activity])
@@ -756,5 +802,6 @@ export function useProgress() {
     subjectStats: (subject) => subjectStats(subject, progress),
     tests, addTest, deleteTest, settings, updateSettings, replaceBackup,
     backupData,
+    storageError,
   }
 }

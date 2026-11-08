@@ -434,6 +434,7 @@ export default function App() {
     updateSettings,
     replaceBackup,
     backupData,
+    storageError,
   } = useProgress()
 
   const [view, setView] = useState('syllabus')
@@ -585,7 +586,7 @@ export default function App() {
             </div>
           </nav>
 
-          <div className="data-controls"><span>Local backup protects progress on this device.</span><button type="button" className="ghost reset-btn" onClick={resetWithConfirm}>Reset all data</button></div>
+          <div className="data-controls"><span>{storageError || 'Progress saves to data.json on this computer.'}</span><button type="button" className="ghost reset-btn" onClick={resetWithConfirm}>Reset all data</button></div>
 
           <div className="legend">
             {['weak', 'average', 'strong'].map((id) => {
@@ -670,7 +671,7 @@ export default function App() {
       <footer className="footer">
         <p>
           Syllabus from APSCHE APECET 2026 · Diploma Holders in Engineering
-          (CSE). Progress saves in this browser.
+          (CSE). Progress saves to the local data.json file while the development server is running.
         </p>
       </footer>
     </div>

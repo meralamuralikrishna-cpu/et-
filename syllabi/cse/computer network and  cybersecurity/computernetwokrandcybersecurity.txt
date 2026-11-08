@@ -1,0 +1,107 @@
+Introduction to Networks.
+1.1 State the Need and importance of Networking.
+1.2 Classification of Networks–LAN,MAN,WAN
+1.3 List Various Network Communication Standards.
+1.4 Explain the OSI Reference Model with its architecture and layer functions.
+1.5 Explain the functions of each layer of TCP/IP Reference Model
+1.6 Compare TCP/IP and OSI reference models.
+1.7 Transmission media Cables
+1.7.1 Coaxial Cables
+1.7.2 Twisted-Pair Cables(Shielded, Unshielded)
+1.7.3 Optical Fiber Cables
+1.8 LAN Devices
+1.8.1 Repeaters
+1.8.2 Hubs
+1.8.3 Switches
+1.8.4 Network Interface Cards(NICs)
+1.8.5 Routers
+1.8.6 Modem
+1.8.7 Gateways.
+1.9 Network Topologies
+1.9.1 Bus
+1.9.2 Ring
+1.9.3 Star
+1.9.4 Mesh
+1.9.5 Hybrid
+2.0 Network Addressing and Management
+2.1 Introduction to Network Addressing.
+2.2 State the importance of TCP/IP addressing scheme
+2.3 Explain TCP/IP Addressing Scheme. 
+193
+2.4 Describe types of IP Address Classes.
+2.5 State the need of subnet and its importance
+2.6 List the advantages of sub netting
+2.7 List disadvantages of sub netting
+2.8 State the need of protocols in computer networks
+2.9 PROTOCOLS
+2.9.1 Hyper Text Transfer Protocol(HTTP)
+2.9.2 File Transfer Protocol(FTP)
+2.9.3 Simple Mail Transfer Protocol(SMTP)
+2.9.4 Address Resolution Protocol(ARP)
+2.9.5 Reverse Address Resolution Protocol(RARP)
+2.9.6 Telnet
+2.10 State the importance of Simple Network Management Protocol(SNMP)
+2.11 Internet Protocol Addressing formats
+2.11.1 IPv4
+2.11.2 IPv6
+2.11.3 IPV4 VS IPV6
+3.0 Introduction to Network security
+3.1 Define terms security and network security.
+3.2 Explain OSI security architecture.
+3.3 List different security goals.
+3.4 Define cryptography.
+3.5 Explain crypto system.
+3.6 Explain authentication, Confidentiality, integrity w.r.t data.
+3.7 Define terms passive and active security threats
+3.8 Differentiate between passive and active security threats.
+3.9 List and explain categories of passive and active security attacks.
+3.10 List and explain categories of security services.
+3.11 List and explain categories of security mechanisms.
+3.12 Explain the Model for network security and with block diagram.
+4.0 Encryption Techniques
+4.1 Define Encryption
+4.2 Define Decryption
+4.3 List essential ingredients of a symmetric cipher.
+4.4 Describe two basic functions used in encryption algorithms.
+4.5 List keys required for two people to communicate via a cipher.
+4.6 State the importance of public key and private key
+4.7 Describe general approaches to attack a cipher.
+4.8 Describe Caesar cipher.
+4.9 Describe the mono-alphabetic cipher.
+4.10 Describe Play fair cipher and Hill ciphers.
+4.11 Discuss One-Time-Pad.
+4.12 List the problems with the one-time pad.
+4.13 Differentiate mono and poly-alphabetic ciphers.
+4.14 Explain a transposition cipher.
+4.15 Explain RSA algorithm
+4.16 Explain steganography.
+4.17 Illustrate ciphers with examples.
+5.0 System security
+5.1 Define Intruders 
+194
+5.2 Define Intrusion detection system
+5.3 Explain intrusion detection system
+5.4 State the need of password management
+5.5 Explain password management
+5.6 SECURITY THREATS
+5.6.1. Malicious softwares
+5.6.2. Backdoor
+5.6.3. Logic Bomb
+5.6.4. Trojan Horses
+5.6.5. Mobile Code Threat
+5.6.6. Multiple-Threat Malware
+5.7 VIRUS AND WORMS
+5.7.1. Define terms virus and worm
+5.7.2. Virus Nature and its Classification
+5.7.3. Macro Viruses and Virus Kits
+5.7.4. E-Mail Viruses
+5.7.5. Virus Counter measures
+5.7.6. Antivirus Approaches
+5.7.7. Morris worm
+5.7.8. worm attacks
+5.7.9. Explain worm technologies
+5.7.10. Explain mobile phone worms
+5.8. Define cyber crime
+5.9. Define Hacking
+5.10. Describe how a worm propagates.
+5.11. Describe worm countermeasures. 

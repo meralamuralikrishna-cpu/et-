@@ -19,7 +19,7 @@ Covers the official common + branch papers:
 - Status cycle: **To do → Learning → Done → Revised**
 - Weighted readiness % (marks × status)
 - Search + subject filters
-- Progress saved in `localStorage`
+- Progress and study history saved to `data.json` while running locally
 - Links to official APSCHE PDFs
 
 ## Run
@@ -29,13 +29,8 @@ npm install
 npm run dev
 ```
 
-## Deploy to Vercel
-
-Import this repository into Vercel. It will detect the Vite app automatically;
-use `npm run build` as the build command and `dist` as the output directory.
-The included `vercel.json` sends app routes such as `/colleges` to the SPA entry
-point, so direct links and page refreshes work on the deployed `.vercel.app`
-domain.
+The Vite development server reads and writes tracker data in the project-root
+`data.json` file. Keep that file to retain your progress.
 
 ## Stack
 
